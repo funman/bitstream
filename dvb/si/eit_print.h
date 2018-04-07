@@ -105,7 +105,7 @@ static inline void eit_print(uint8_t *p_eit,
         start_ts = dvb_time_format_UTC(eitn_get_start_time(p_event), NULL, start_str);
 
         dvb_time_decode_bcd(eitn_get_duration_bcd(p_event), &duration, &hour, &min, &sec);
-        sprintf(duration_str, "%02d:%02d:%02d", hour, min, sec);
+        sprintf(duration_str, "%02u:%02u:%02u", hour % 24, min % 60, sec % 60);
 
         switch (i_print_type) {
         case PRINT_XML:
